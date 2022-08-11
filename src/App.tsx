@@ -1,11 +1,14 @@
-import { ThemeProvider, Typography } from "@mui/material";
-import { theme } from "./theme/theme";
+import { Route, Routes } from "react-router-dom";
+import Home from "./components/Home/Home";
+import { Layout } from "./components/Layout/Layout";
 
 const App = () => {
   return (
-    <ThemeProvider theme={theme}>
-      <Typography sx={{ textAlign: "center" }}>Hello</Typography>
-    </ThemeProvider>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route path="/" element={<Home />} />
+      </Route>
+    </Routes>
   );
 };
 
