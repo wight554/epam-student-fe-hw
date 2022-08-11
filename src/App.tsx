@@ -1,19 +1,12 @@
-import {useState} from 'react';
-import reactLogo from './assets/react.svg';
-import './App.css';
-import {Route, Routes} from 'react-router-dom';
-import {Layout} from './components/Layout/Layout';
-import Home from './components/Home/Home';
+import { ThemeProvider, Typography } from "@mui/material";
+import { theme } from "./theme/theme";
 
-function App() {
-
-    return (
-        <Routes>
-            <Route path="/" element={<Layout/>}>
-                <Route path="/" element={<Home/>}/>
-            </Route>
-        </Routes>
-    );
-}
+const App = () => {
+  return (
+    <ThemeProvider theme={theme}>
+      <Typography sx={{ textAlign: "center" }}>Hello</Typography>
+    </ThemeProvider>
+  );
+};
 
 export default App;
