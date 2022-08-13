@@ -72,6 +72,14 @@ export const Header = () => {
               >
                 <Typography textAlign="center">Task 1</Typography>
               </MenuItem>
+              <MenuItem
+                onClick={() => {
+                  setAnchorElNav(null);
+                  navigate("/create");
+                }}
+              >
+                <Typography textAlign="center">Create file</Typography>
+              </MenuItem>
             </Menu>
           </Box>
           <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
@@ -92,6 +100,15 @@ export const Header = () => {
               sx={{ my: 2, color: "white", display: "block" }}
             >
               Task 1
+            </Button>
+            <Button
+              onClick={() => {
+                setAnchorElNav(null);
+                navigate("/create");
+              }}
+              sx={{ my: 2, color: "white", display: "block" }}
+            >
+              Create file
             </Button>
           </Box>
         </Toolbar>

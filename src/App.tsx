@@ -14,8 +14,8 @@ const App = () => {
         <Route path="/task1" element={<Task1 />}>
           <Route index element={<FileList />} />
           <Route path=":filename" element={<FileItem />} />
-          <Route path="create" element={<CreateFileForm />} />
         </Route>
+        <Route path="create" element={<CreateFileForm />} />
       </Route>
     </Routes>
   );

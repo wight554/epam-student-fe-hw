@@ -4,9 +4,18 @@ export const theme = createTheme({
   typography: {
     fontFamily: ["Roboto", "sans-serif"].join(","),
   },
-  palette:{
+  components: {
+    MuiInputLabel: {
+      styleOverrides: {
+        root: {
+          color: `#8d8d8d`,
+        },
+      },
+    },
+  },
+  palette: {
     primary: {
-      main: '#494864'
-    }
+      main: "#494864",
+    },
   },
 });
