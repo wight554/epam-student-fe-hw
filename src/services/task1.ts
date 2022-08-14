@@ -14,7 +14,20 @@ export const task1Api = createApi({
     getFileByName: builder.query<any, string | undefined>({
       query: (filename) => `files/${filename}`,
     }),
+    createFile: builder.mutation<any, any>({
+      query: (file) => {
+        return {
+          url: "files",
+          method: "POST",
+          body: file,
+        };
+      },
+    }),
   }),
 });
 
-export const { useGetFilesQuery, useGetFileByNameQuery } = task1Api;
+export const {
+  useGetFilesQuery,
+  useGetFileByNameQuery,
+  useCreateFileMutation,
+} = task1Api;
