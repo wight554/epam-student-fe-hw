@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import {
-  Box,
   Button,
   FormControl,
   Grid,
@@ -11,10 +10,11 @@ import {
   TextField,
 } from "@mui/material";
 import { useCreateFileMutation } from "../../services/task1";
-import { FileFormBody } from "../../types";
+import { IFileFormBody } from "../../types";
+import { StyledTextField } from "./StyledTextField";
 
 export const CreateFileForm = () => {
-  const [fileForm, setFileForm] = useState<FileFormBody>({
+  const [fileForm, setFileForm] = useState<IFileFormBody>({
     filename: "",
     content: "",
     type: "",
@@ -47,8 +47,7 @@ export const CreateFileForm = () => {
       sx={{ mt: 5 }}
     >
       <Grid item>
-        <TextField
-          sx={{ width: "200px", input: { color: "#fff" } }}
+        <StyledTextField
           type="text"
           label="filename"
           variant="filled"
@@ -59,8 +58,7 @@ export const CreateFileForm = () => {
         />
       </Grid>
       <Grid item>
-        <TextField
-          sx={{ width: "200px", input: { color: "#fff" } }}
+        <StyledTextField
           type="password"
           label="password"
           variant="filled"
