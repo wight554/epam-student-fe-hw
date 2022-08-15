@@ -3,6 +3,7 @@ import {
   Box,
   Button,
   FormControl,
+  Grid,
   InputLabel,
   MenuItem,
   Select,
@@ -38,69 +39,78 @@ export const CreateFileForm = () => {
   };
 
   return (
-    <Box
-      sx={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        marginTop: 5,
-      }}
+    <Grid
+      container
+      spacing={1}
+      direction="column"
+      alignItems="center"
+      sx={{ mt: 5 }}
     >
-      <TextField
-        sx={{ width: "200px", marginTop: "10px", input: { color: "#fff" } }}
-        type="text"
-        label="filename"
-        variant="filled"
-        color="info"
-        name="filename"
-        value={fileForm.filename}
-        onChange={handleInputChange}
-      />
-      <TextField
-        sx={{ width: "200px", marginTop: "10px", input: { color: "#fff" } }}
-        type="password"
-        label="password"
-        variant="filled"
-        color="info"
-        name="password"
-        value={fileForm.password}
-        onChange={handleInputChange}
-      />
-      <TextField
-        id="filled-multiline-flexible"
-        sx={{
-          width: "300px",
-          marginTop: "10px",
-        }}
-        inputProps={{ style: { color: "#fff" } }}
-        label="content"
-        multiline
-        variant="filled"
-        color="info"
-        name="content"
-        minRows={4}
-        maxRows={10}
-        value={fileForm.content}
-        onChange={handleInputChange}
-      />
-      <FormControl variant="filled" sx={{ m: 1, minWidth: 120 }}>
-        <InputLabel id="demo-simple-select-filled-label">Type</InputLabel>
-        <Select
-          onChange={handleSelectChange}
+      <Grid item>
+        <TextField
+          sx={{ width: "200px", input: { color: "#fff" } }}
+          type="text"
+          label="filename"
+          variant="filled"
           color="info"
-          labelId="demo-simple-select-filled-label"
-          id="demo-simple-select-filled"
-          name="type"
-          value={fileForm.type}
-          sx={{ width: "200px", marginTop: "10px", color: "#fff" }}
-        >
-          <MenuItem value={".txt"}>.txt</MenuItem>
-          <MenuItem value={".json"}>.json</MenuItem>
-        </Select>
-      </FormControl>
-      <Button onClick={handleFileCreate} variant="contained" color="primary">
-        save
-      </Button>
-    </Box>
+          name="filename"
+          value={fileForm.filename}
+          onChange={handleInputChange}
+        />
+      </Grid>
+      <Grid item>
+        <TextField
+          sx={{ width: "200px", input: { color: "#fff" } }}
+          type="password"
+          label="password"
+          variant="filled"
+          color="info"
+          name="password"
+          value={fileForm.password}
+          onChange={handleInputChange}
+        />
+      </Grid>
+      <Grid item>
+        <TextField
+          id="filled-multiline-flexible"
+          sx={{
+            width: "300px",
+            marginTop: "10px",
+          }}
+          inputProps={{ style: { color: "#fff" } }}
+          label="content"
+          multiline
+          variant="filled"
+          color="info"
+          name="content"
+          minRows={4}
+          maxRows={10}
+          value={fileForm.content}
+          onChange={handleInputChange}
+        />
+      </Grid>
+      <Grid item>
+        <FormControl variant="filled" sx={{ minWidth: 120 }}>
+          <InputLabel id="demo-simple-select-filled-label">Type</InputLabel>
+          <Select
+            onChange={handleSelectChange}
+            color="info"
+            labelId="demo-simple-select-filled-label"
+            id="demo-simple-select-filled"
+            name="type"
+            value={fileForm.type}
+            sx={{ width: "200px", color: "#fff" }}
+          >
+            <MenuItem value={".txt"}>.txt</MenuItem>
+            <MenuItem value={".json"}>.json</MenuItem>
+          </Select>
+        </FormControl>
+      </Grid>
+      <Grid item>
+        <Button onClick={handleFileCreate} variant="contained" color="primary">
+          save
+        </Button>
+      </Grid>
+    </Grid>
   );
 };
