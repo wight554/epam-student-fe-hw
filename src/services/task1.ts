@@ -11,10 +11,10 @@ export const task1Api = createApi({
       query: () => "/api/v1/files",
       transformResponse: ({ files }) => files,
     }),
-    getFileByName: builder.query<IFile, string | undefined>({
+    getFileByName: builder.query<IFile, string>({
       query: (filename) => `/api/v1/files/${filename}`,
     }),
-    createFile: builder.mutation<any, IFileFormBody>({
+    createFile: builder.mutation<void, IFileFormBody>({
       query: (file) => ({
         url: "/api/v1/files",
         method: "POST",
