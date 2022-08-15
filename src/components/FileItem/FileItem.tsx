@@ -5,7 +5,7 @@ import { Box, Typography } from "@mui/material";
 
 export const FileItem = () => {
   const { filename } = useParams();
-  const { data, error, isLoading } = useGetFileByNameQuery(filename);
+  const { data, error, isLoading } = useGetFileByNameQuery(filename!);
   return (
     <Box>
       <Box
