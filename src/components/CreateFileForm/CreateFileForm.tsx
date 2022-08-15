@@ -26,12 +26,12 @@ export const CreateFileForm = () => {
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setFileForm({ ...fileForm, [name]: value });
+    setFileForm((prevState) => ({ ...prevState, [name]: value }));
   };
 
   const handleSelectChange = (e: SelectChangeEvent) => {
     const { name, value } = e.target;
-    setFileForm({ ...fileForm, [name]: value });
+    setFileForm((prevState) => ({ ...prevState, [name]: value }));
   };
 
   const handleFileCreate = () => {
