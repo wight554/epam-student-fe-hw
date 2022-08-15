@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import {File, FileFormBody} from '../types';
+import { File, FileFormBody } from "../types";
 
 export const task1Api = createApi({
   reducerPath: "task1Api",

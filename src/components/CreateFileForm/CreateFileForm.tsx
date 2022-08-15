@@ -10,7 +10,7 @@ import {
   TextField,
 } from "@mui/material";
 import { useCreateFileMutation } from "../../services/task1";
-import {FileFormBody} from '../../types';
+import { FileFormBody } from "../../types";
 
 export const CreateFileForm = () => {
   const [fileForm, setFileForm] = useState<FileFormBody>({
