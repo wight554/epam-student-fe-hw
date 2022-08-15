@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import {File, FileFormBody} from '../types';
 
-// Define a service using a base URL and expected endpoints
 export const task1Api = createApi({
   reducerPath: "task1Api",
   baseQuery: fetchBaseQuery({
@@ -11,10 +11,10 @@ export const task1Api = createApi({
       query: () => "files",
       transformResponse: ({ files }) => files,
     }),
-    getFileByName: builder.query<any, string | undefined>({
+    getFileByName: builder.query<File, string | undefined>({
       query: (filename) => `files/${filename}`,
     }),
-    createFile: builder.mutation<any, any>({
+    createFile: builder.mutation<any, FileFormBody>({
       query: (file) => {
         return {
           url: "files",

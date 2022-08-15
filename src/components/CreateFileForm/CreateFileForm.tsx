@@ -10,9 +10,10 @@ import {
   TextField,
 } from "@mui/material";
 import { useCreateFileMutation } from "../../services/task1";
+import {FileFormBody} from '../../types';
 
 export const CreateFileForm = () => {
-  const [fileForm, setFileForm] = useState({
+  const [fileForm, setFileForm] = useState<FileFormBody>({
     filename: "",
     content: "",
     type: "",
@@ -27,12 +28,12 @@ export const CreateFileForm = () => {
     setFileForm({ ...fileForm, [name]: value });
   };
 
-  const handleSelectChange = (e: SelectChangeEvent<string>) => {
+  const handleSelectChange = (e: SelectChangeEvent) => {
     const { name, value } = e.target;
     setFileForm({ ...fileForm, [name]: value });
   };
 
-  const handleFileCreate = async () => {
+  const handleFileCreate = () => {
     createFile(fileForm);
   };
 
