@@ -4,24 +4,22 @@ import { IFile, IFileFormBody } from "../types";
 export const task1Api = createApi({
   reducerPath: "task1Api",
   baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:8080/api/v1/",
+    baseUrl: "http://localhost:8080",
   }),
   endpoints: (builder) => ({
     getFiles: builder.query<string[], void>({
-      query: () => "files",
+      query: () => "/api/v1/files",
       transformResponse: ({ files }) => files,
     }),
     getFileByName: builder.query<IFile, string | undefined>({
-      query: (filename) => `files/${filename}`,
+      query: (filename) => `/api/v1/files/${filename}`,
     }),
     createFile: builder.mutation<any, IFileFormBody>({
-      query: (file) => {
-        return {
-          url: "files",
-          method: "POST",
-          body: file,
-        };
-      },
+      query: (file) => ({
+        url: "/api/v1/files",
+        method: "POST",
+        body: file,
+      }),
     }),
   }),
 });
