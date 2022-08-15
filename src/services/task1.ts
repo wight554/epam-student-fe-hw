@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { File, FileFormBody } from "../types";
+import { IFile, IFileFormBody } from "../types";
 
 export const task1Api = createApi({
   reducerPath: "task1Api",
@@ -11,10 +11,10 @@ export const task1Api = createApi({
       query: () => "files",
       transformResponse: ({ files }) => files,
     }),
-    getFileByName: builder.query<File, string | undefined>({
+    getFileByName: builder.query<IFile, string | undefined>({
       query: (filename) => `files/${filename}`,
     }),
-    createFile: builder.mutation<any, FileFormBody>({
+    createFile: builder.mutation<any, IFileFormBody>({
       query: (file) => {
         return {
           url: "files",

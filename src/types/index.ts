@@ -1,14 +1,14 @@
-export type File = {
+export interface IFile {
   content: string;
   extension: string;
   filename: string;
   message: string;
   uploadedDate: Date;
-};
+}
 
-export type FileFormBody = {
+export interface IFileFormBody {
   filename: string;
   password?: string;
   content: string;
   type: string;
-};
+}
