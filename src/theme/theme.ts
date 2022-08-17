@@ -4,16 +4,8 @@ export const theme = createTheme({
   typography: {
     fontFamily: ["Roboto", "sans-serif"].join(","),
   },
-  components: {
-    MuiInputLabel: {
-      styleOverrides: {
-        root: {
-          color: `#8d8d8d`,
-        },
-      },
-    },
-  },
   palette: {
+    mode: "dark",
     primary: {
       main: "#494864",
     },

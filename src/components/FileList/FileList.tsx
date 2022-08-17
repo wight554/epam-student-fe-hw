@@ -19,7 +19,7 @@ export const FileList = () => {
       aria-labelledby="nested-list-subheader"
       subheader={
         <ListSubheader
-          sx={{ bgcolor: "primary.dark", color: "#fff" }}
+          sx={{ bgcolor: "primary.dark" }}
           component="div"
           id="nested-list-subheader"
         >
