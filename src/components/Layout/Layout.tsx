@@ -7,7 +7,7 @@ export const Layout = () => {
   return (
     <>
       <Header />
-      <Box sx={{ p: 2, mt: 2 }}>
+      <Box sx={{ p: 2 }}>
         <Outlet />
       </Box>
     </>

@@ -35,7 +35,7 @@ export const CreateFileForm = () => {
 
   return (
     <Grid container direction="column" alignItems="center">
-      <Card sx={{ padding: 5, maxWidth: 360 }}>
+      <Card sx={{ padding: 5, maxWidth: 360, mt: 2 }}>
         <Typography variant="h6" textAlign="center">
           Create file
         </Typography>
