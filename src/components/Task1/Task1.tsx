@@ -6,7 +6,7 @@ import Button from "@mui/material/Button";
 export const Task1 = () => {
   const navigate = useNavigate();
   return (
-    <Box sx={{ mt: 5 }}>
+    <Box>
       <Button
         onClick={() => {
           navigate("/create");

@@ -2,18 +2,14 @@ import React, { useState } from "react";
 import {
   Button,
   Card,
-  FormControl,
   Grid,
-  InputLabel,
   MenuItem,
-  Select,
   SelectChangeEvent,
   TextField,
   Typography,
 } from "@mui/material";
 import { useCreateFileMutation } from "../../services/task1";
 import { IFileFormBody } from "../../types";
-import { StyledTextField } from "./StyledTextField";
 import { useNavigate } from "react-router-dom";
 
 export const CreateFileForm = () => {
@@ -45,19 +41,14 @@ export const CreateFileForm = () => {
 
   return (
     <Grid container direction="column" alignItems="center">
-      <Card sx={{ padding: 5 }}>
+      <Card sx={{ padding: 5, maxWidth: 360 }}>
         <Typography variant="h6" textAlign="center">
           Create file
         </Typography>
-        <Grid
-          container
-          spacing={2}
-          direction="column"
-          alignItems="center"
-          sx={{ mt: 5 }}
-        >
-          <Grid item>
-            <StyledTextField
+        <Grid container spacing={2} alignItems="center" sx={{ mt: 5 }}>
+          <Grid item xs={12}>
+            <TextField
+              fullWidth
               type="text"
               label="File name"
               variant="filled"
@@ -67,8 +58,9 @@ export const CreateFileForm = () => {
               onChange={handleInputChange}
             />
           </Grid>
-          <Grid item>
-            <StyledTextField
+          <Grid item xs={12}>
+            <TextField
+              fullWidth
               type="password"
               label="Password"
               variant="filled"
@@ -78,24 +70,25 @@ export const CreateFileForm = () => {
               onChange={handleInputChange}
             />
           </Grid>
-          <Grid item>
-            <FormControl variant="filled" sx={{ minWidth: 200 }}>
-              <InputLabel id="demo-simple-select-filled-label">Type</InputLabel>
-              <Select
-                onChange={handleSelectChange}
-                color="info"
-                labelId="demo-simple-select-filled-label"
-                id="demo-simple-select-filled"
-                name="type"
-                value={fileForm.type}
-              >
-                <MenuItem value={".txt"}>.txt</MenuItem>
-                <MenuItem value={".json"}>.json</MenuItem>
-              </Select>
-            </FormControl>
-          </Grid>
-          <Grid item>
+          <Grid item xs={12}>
             <TextField
+              fullWidth
+              select
+              type="text"
+              label="Type"
+              variant="filled"
+              color="info"
+              name="type"
+              value={fileForm.type}
+              onChange={handleInputChange}
+            >
+              <MenuItem value={".txt"}>.txt</MenuItem>
+              <MenuItem value={".json"}>.json</MenuItem>
+            </TextField>
+          </Grid>
+          <Grid item xs={12}>
+            <TextField
+              fullWidth
               id="filled-multiline-flexible"
               label="Content"
               multiline
@@ -108,8 +101,8 @@ export const CreateFileForm = () => {
               onChange={handleInputChange}
             />
           </Grid>
-          <Grid item>
-            <Grid container spacing={5}>
+          <Grid item xs={12}>
+            <Grid container spacing={2} justifyContent="flex-end">
               <Grid item>
                 <Button
                   onClick={() => navigate("/task1")}

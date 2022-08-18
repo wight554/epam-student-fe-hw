@@ -15,32 +15,30 @@ export const Header = () => {
   const navigate = useNavigate();
   return (
     <AppBar position="static">
-      <Container maxWidth="xl">
-        <Toolbar disableGutters>
-          <Grid container spacing={2}>
-            <Grid item>
-              <Button
-                color="info"
-                onClick={() => {
-                  navigate("/");
-                }}
-              >
-                Home
-              </Button>
-            </Grid>
-            <Grid item>
-              <Button
-                color="info"
-                onClick={() => {
-                  navigate("/task1");
-                }}
-              >
-                Task 1
-              </Button>
-            </Grid>
+      <Toolbar>
+        <Grid container spacing={2}>
+          <Grid item>
+            <Button
+              color="info"
+              onClick={() => {
+                navigate("/");
+              }}
+            >
+              Home
+            </Button>
           </Grid>
-        </Toolbar>
-      </Container>
+          <Grid item>
+            <Button
+              color="info"
+              onClick={() => {
+                navigate("/task1");
+              }}
+            >
+              Task 1
+            </Button>
+          </Grid>
+        </Grid>
+      </Toolbar>
     </AppBar>
   );
 };

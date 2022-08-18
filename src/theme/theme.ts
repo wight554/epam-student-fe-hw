@@ -9,5 +9,8 @@ export const theme = createTheme({
     primary: {
       main: "#494864",
     },
+    background: {
+      default: "#242424",
+    },
   },
 });
