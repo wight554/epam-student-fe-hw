@@ -17,7 +17,6 @@ export const CreateFileForm = () => {
     filename: "",
     content: "",
     type: "",
-    password: "",
   });
 
   const navigate = useNavigate();
@@ -55,18 +54,6 @@ export const CreateFileForm = () => {
               color="info"
               name="filename"
               value={fileForm.filename}
-              onChange={handleInputChange}
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <TextField
-              fullWidth
-              type="password"
-              label="Password"
-              variant="filled"
-              color="info"
-              name="password"
-              value={fileForm.password}
               onChange={handleInputChange}
             />
           </Grid>
