@@ -1,5 +1,6 @@
 import React from "react";
 import {
+  Card,
   List,
   ListItemButton,
   ListItemText,
@@ -10,28 +11,29 @@ import { useNavigate } from "react-router-dom";
 
 export const FileList = () => {
   const { data: files, error, isLoading } = useGetFilesQuery();
+
   const navigate = useNavigate();
 
   return (
-    <List
-      sx={{ mt: 2, width: "100%", maxWidth: 360, bgcolor: "primary.dark" }}
-      component="nav"
-      aria-labelledby="nested-list-subheader"
-      subheader={
-        <ListSubheader
-          sx={{ bgcolor: "primary.dark" }}
-          component="div"
-          id="nested-list-subheader"
-        >
-          Files
-        </ListSubheader>
-      }
-    >
-      {(files || []).map((fileName) => (
-        <ListItemButton key={fileName} onClick={() => navigate(`${fileName}`)}>
-          <ListItemText primary={fileName} />
-        </ListItemButton>
-      ))}
-    </List>
+    <Card sx={{ maxWidth: 360 }}>
+      <List
+        component="nav"
+        aria-labelledby="nested-list-subheader"
+        subheader={
+          <ListSubheader component="div" id="nested-list-subheader">
+            Files
+          </ListSubheader>
+        }
+      >
+        {(files || []).map((fileName) => (
+          <ListItemButton
+            key={fileName}
+            onClick={() => navigate(`${fileName}`)}
+          >
+            <ListItemText primary={fileName} />
+          </ListItemButton>
+        ))}
+      </List>
+    </Card>
   );
 };

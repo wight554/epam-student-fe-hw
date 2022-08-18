@@ -17,7 +17,7 @@ export const Header = () => {
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <Grid display="flex" spacing="2">
+          <Grid container spacing={2}>
             <Grid item>
               <Button
                 color="info"

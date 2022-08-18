@@ -109,7 +109,7 @@ export const CreateFileForm = () => {
             />
           </Grid>
           <Grid item>
-            <Grid container display="flex" spacing={5}>
+            <Grid container spacing={5}>
               <Grid item>
                 <Button
                   onClick={() => navigate("/task1")}
