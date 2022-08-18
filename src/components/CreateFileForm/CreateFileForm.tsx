@@ -29,11 +29,6 @@ export const CreateFileForm = () => {
     setFileForm((prevState) => ({ ...prevState, [name]: value }));
   };
 
-  const handleSelectChange = (e: SelectChangeEvent) => {
-    const { name, value } = e.target;
-    setFileForm((prevState) => ({ ...prevState, [name]: value }));
-  };
-
   const handleFileCreate = () => {
     createFile(fileForm);
   };
