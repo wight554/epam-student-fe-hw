@@ -59,7 +59,7 @@ export const CreateFileForm = () => {
           <Grid item>
             <StyledTextField
               type="text"
-              label="filename"
+              label="File name"
               variant="filled"
               color="info"
               name="filename"
@@ -70,7 +70,7 @@ export const CreateFileForm = () => {
           <Grid item>
             <StyledTextField
               type="password"
-              label="password"
+              label="Password"
               variant="filled"
               color="info"
               name="password"
@@ -97,7 +97,7 @@ export const CreateFileForm = () => {
           <Grid item>
             <TextField
               id="filled-multiline-flexible"
-              label="content"
+              label="Content"
               multiline
               variant="filled"
               color="info"
