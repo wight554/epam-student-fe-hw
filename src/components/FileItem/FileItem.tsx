@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import {
   useChangeFileMutation,
-  useCreateFileMutation,
   useDeleteFileMutation,
   useGetFileByNameQuery,
 } from "../../services/task1";
@@ -13,27 +12,25 @@ export const FileItem = () => {
   const navigate = useNavigate();
 
   const { data, error, isLoading } = useGetFileByNameQuery(filename!);
-  const [changeFile, {}] = useChangeFileMutation();
-  const [deleteFile, {}] = useDeleteFileMutation();
+  const [changeFile] = useChangeFileMutation();
+  const [deleteFile] = useDeleteFileMutation();
 
   const [content, setContent] = useState("");
   const [editMode, setEditMode] = useState(false);
 
   useEffect(() => {
-    setContent((data || {}).content || "");
+    setContent(data?.content || "");
   }, [data]);
 
   const onSaveChanges = () => {
-    const isConfirm = confirm("Are you sure?");
-    if (isConfirm) {
+    if (confirm("Are you sure?")) {
       changeFile({ filename: filename!, content });
       setEditMode(false);
     }
   };
 
   const onDeleteFile = () => {
-    const isConfirm = confirm("Are you sure?");
-    if (isConfirm) {
+    if (confirm("Are you sure?")) {
       deleteFile(filename!);
       navigate("/task1");
     }
@@ -54,6 +51,7 @@ export const FileItem = () => {
           <Grid item xs={12}>
             <TextField
               fullWidth
+              multiline
               type="text"
               variant={editMode ? "filled" : "outlined"}
               color="info"

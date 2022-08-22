@@ -4,7 +4,6 @@ import {
   Card,
   Grid,
   MenuItem,
-  SelectChangeEvent,
   TextField,
   Typography,
 } from "@mui/material";
