@@ -1,7 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { IFile, IFileFormBody } from "../types";
-
-const BASE_URL = "http://localhost:8080";
+import { BASE_URL } from "../constants/api";
 
 export const task1Api = createApi({
   reducerPath: "task1Api",
