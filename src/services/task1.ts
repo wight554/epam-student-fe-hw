@@ -12,6 +12,15 @@ export const task1Api = createApi({
     getFiles: builder.query<string[], void>({
       query: () => "/api/v1/files",
       transformResponse: ({ files }) => files,
+      providesTags: (result, error, arg) =>
+        result
+          ? [
+              ...result.map(
+                (filename) => ({ type: "File" as const, id: filename }),
+                "File"
+              ),
+            ]
+          : ["File"],
     }),
     getFileByName: builder.query<IFile, string>({
       query: (filename) => `/api/v1/files/${filename}`,
@@ -45,6 +54,7 @@ export const task1Api = createApi({
         url: `/api/v1/files/${filename}`,
         method: "DELETE",
       }),
+      invalidatesTags: (result, error, arg) => [{ type: "File", id: arg }],
     }),
   }),
 });
