@@ -8,6 +8,7 @@ export const task1Api = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: `${BASE_URL}`,
   }),
+  tagTypes: ["Files"],
   endpoints: (builder) => ({
     getFiles: builder.query<string[], void>({
       query: () => "/api/v1/files",
@@ -15,6 +16,7 @@ export const task1Api = createApi({
     }),
     getFileByName: builder.query<IFile, string>({
       query: (filename) => `/api/v1/files/${filename}`,
+      providesTags: ["Files"],
     }),
     createFile: builder.mutation<void, IFileFormBody>({
       query: (file) => ({
@@ -32,21 +34,7 @@ export const task1Api = createApi({
         method: "PUT",
         body: { content },
       }),
-      async onQueryStarted(
-        { filename, content },
-        { dispatch, queryFulfilled }
-      ) {
-        const patchResult = dispatch(
-          task1Api.util.updateQueryData("getFileByName", filename, (draft) => {
-            Object.assign(draft, { content });
-          })
-        );
-        try {
-          await queryFulfilled;
-        } catch {
-          patchResult.undo();
-        }
-      },
+      invalidatesTags: ["Files"],
     }),
     deleteFile: builder.mutation<void, string>({
       query: (filename) => ({
