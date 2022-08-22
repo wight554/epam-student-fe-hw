@@ -23,6 +23,37 @@ export const task1Api = createApi({
         body: file,
       }),
     }),
+    changeFile: builder.mutation<
+      void,
+      Pick<IFile, "filename"> & Partial<IFile>
+    >({
+      query: ({ filename, content }) => ({
+        url: `/api/v1/files/${filename}`,
+        method: "PUT",
+        body: { content },
+      }),
+      async onQueryStarted(
+        { filename, content },
+        { dispatch, queryFulfilled }
+      ) {
+        const patchResult = dispatch(
+          task1Api.util.updateQueryData("getFileByName", filename, (draft) => {
+            Object.assign(draft, { content });
+          })
+        );
+        try {
+          await queryFulfilled;
+        } catch {
+          patchResult.undo();
+        }
+      },
+    }),
+    deleteFile: builder.mutation<void, string>({
+      query: (filename) => ({
+        url: `/api/v1/files/${filename}`,
+        method: "DELETE",
+      }),
+    }),
   }),
 });
 
@@ -30,4 +61,6 @@ export const {
   useGetFilesQuery,
   useGetFileByNameQuery,
   useCreateFileMutation,
+  useChangeFileMutation,
+  useDeleteFileMutation,
 } = task1Api;
