@@ -36,17 +36,14 @@ export const task1Api = createApi({
         body: file,
       }),
     }),
-    changeFile: builder.mutation<
-      void,
-      Pick<IFile, "filename"> & Partial<IFile>
-    >({
+    changeFile: builder.mutation<void, Pick<IFile, "filename" | "content">>({
       query: ({ filename, content }) => ({
         url: `/api/v1/files/${filename}`,
         method: "PUT",
         body: { content },
       }),
-      invalidatesTags: (result, error, arg) => [
-        { type: "File", id: arg.filename },
+      invalidatesTags: (result, error, { filename }) => [
+        { type: "File", id: filename },
       ],
     }),
     deleteFile: builder.mutation<void, string>({
