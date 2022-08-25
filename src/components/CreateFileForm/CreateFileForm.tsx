@@ -8,11 +8,11 @@ import {
   Typography,
 } from "@mui/material";
 import { useCreateFileMutation } from "../../services/task1";
-import { IFileFormBody } from "../../types";
+import { FileFormBody } from "../../types";
 import { useNavigate } from "react-router-dom";
 
 export const CreateFileForm = () => {
-  const [fileForm, setFileForm] = useState<IFileFormBody>({
+  const [fileForm, setFileForm] = useState<FileFormBody>({
     filename: "",
     content: "",
     type: "",
