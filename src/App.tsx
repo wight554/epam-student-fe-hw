@@ -5,6 +5,8 @@ import { Task1 } from "./components/Task1";
 import { FileList } from "./components/FileList";
 import { FileItem } from "./components/FileItem";
 import { CreateFileForm } from "./components/CreateFileForm";
+import { Login } from "./components/Login";
+import { Register } from "./components/Register";
 
 const App = () => {
   return (
@@ -16,6 +18,8 @@ const App = () => {
           <Route path=":filename" element={<FileItem />} />
         </Route>
         <Route path="create" element={<CreateFileForm />} />
+        <Route path="login" element={<Login />} />
+        <Route path="register" element={<Register />} />
       </Route>
     </Routes>
   );

@@ -10,25 +10,37 @@ export const Header = () => {
   return (
     <AppBar position="static">
       <Toolbar>
-        <Grid container spacing={2}>
-          <Grid item>
-            <Button
-              color="info"
-              onClick={() => {
-                navigate("/");
-              }}
-            >
-              Home
-            </Button>
+        <Grid container justifyContent="space-between" spacing={2}>
+          <Grid item container xs spacing={3}>
+            <Grid item>
+              <Button
+                color="info"
+                onClick={() => {
+                  navigate("/");
+                }}
+              >
+                Home
+              </Button>
+            </Grid>
+            <Grid item>
+              <Button
+                color="info"
+                onClick={() => {
+                  navigate("/task1");
+                }}
+              >
+                Task 1
+              </Button>
+            </Grid>
           </Grid>
           <Grid item>
             <Button
               color="info"
               onClick={() => {
-                navigate("/task1");
+                navigate("/login");
               }}
             >
-              Task 1
+              Login
             </Button>
           </Grid>
         </Grid>

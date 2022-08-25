@@ -12,3 +12,9 @@ export interface IFileFormBody {
   content: string;
   type: string;
 }
+
+export interface IAuthFormBody {
+  name: string;
+  email: string;
+  password: string;
+}
