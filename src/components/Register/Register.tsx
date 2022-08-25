@@ -22,13 +22,13 @@ export const Register = () => {
 
   const handleRegister = async () => {
     const { name, email, password } = registerForm;
-    const token  = await register({ name, email, password }).unwrap();
-    console.log(token);
+    const token = await register({ name, email, password }).unwrap();
     if (token) {
       alert("Success");
       navigate("/login");
     }
   };
+
   return (
     <Grid container direction="column" alignItems="center">
       <Card sx={{ padding: 5, maxWidth: 360, mt: 2 }}>
