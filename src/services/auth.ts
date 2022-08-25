@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { IAuthFormBody } from "../types";
+import { AuthFormBody } from "../types";
 import { BASE_URL } from "../constants/api";
 
 export const authApi = createApi({
@@ -9,7 +9,7 @@ export const authApi = createApi({
   }),
   tagTypes: ["Auth"],
   endpoints: (builder) => ({
-    login: builder.mutation<string, Pick<IAuthFormBody, "email" | "password">>({
+    login: builder.mutation<string, Pick<AuthFormBody, "email" | "password">>({
       query: (body) => ({
         url: "/api/v1/user/login",
         method: "POST",
@@ -17,7 +17,7 @@ export const authApi = createApi({
       }),
       transformResponse: ({ token }) => token,
     }),
-    register: builder.mutation<string, IAuthFormBody>({
+    register: builder.mutation<string, AuthFormBody>({
       query: (body) => ({
         url: "/api/v1/user/register",
         method: "POST",

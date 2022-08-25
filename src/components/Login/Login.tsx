@@ -28,7 +28,6 @@ export const Login = () => {
   const handleLogin = async () => {
     const token = await login(loginForm).unwrap();
     if (token) {
-      alert("success");
       localStorage.setItem("AUTH_TOKEN", token);
       navigate("/");
     }

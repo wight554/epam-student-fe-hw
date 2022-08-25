@@ -24,7 +24,6 @@ export const Register = () => {
     const { name, email, password } = registerForm;
     const token = await register({ name, email, password }).unwrap();
     if (token) {
-      alert("Success");
       navigate("/login");
     }
   };

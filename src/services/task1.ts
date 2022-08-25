@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { IFile, IFileFormBody } from "../types";
+import { File, FileFormBody } from "../types";
 import { BASE_URL } from "../constants/api";
 
 export const task1Api = createApi({
@@ -22,21 +22,21 @@ export const task1Api = createApi({
             ]
           : ["File"],
     }),
-    getFileByName: builder.query<IFile, string>({
+    getFileByName: builder.query<File, string>({
       query: (filename) => `/api/v1/files/${filename}`,
       providesTags: (result, error, arg) =>
         result
           ? [{ type: "File" as const, id: result.filename }, "File"]
           : ["File"],
     }),
-    createFile: builder.mutation<void, IFileFormBody>({
+    createFile: builder.mutation<void, FileFormBody>({
       query: (file) => ({
         url: "/api/v1/files",
         method: "POST",
         body: file,
       }),
     }),
-    changeFile: builder.mutation<void, Pick<IFile, "filename" | "content">>({
+    changeFile: builder.mutation<void, Pick<File, "filename" | "content">>({
       query: ({ filename, content }) => ({
         url: `/api/v1/files/${filename}`,
         method: "PUT",
