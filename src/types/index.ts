@@ -1,4 +1,4 @@
-export interface IFile {
+export interface File {
   content: string;
   extension: string;
   filename: string;
@@ -6,9 +6,15 @@ export interface IFile {
   uploadedDate: Date;
 }
 
-export interface IFileFormBody {
+export interface FileFormBody {
   filename: string;
   password?: string;
   content: string;
   type: string;
+}
+
+export interface AuthFormBody {
+  name: string;
+  email: string;
+  password: string;
 }
