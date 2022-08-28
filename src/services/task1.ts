@@ -1,12 +1,10 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { createApi } from "@reduxjs/toolkit/query/react";
 import { File, FileFormBody } from "../types";
-import { BASE_URL } from "../constants/api";
+import { baseQuery } from "../constants/api";
 
 export const task1Api = createApi({
   reducerPath: "task1Api",
-  baseQuery: fetchBaseQuery({
-    baseUrl: `${BASE_URL}`,
-  }),
+  baseQuery,
   tagTypes: ["File"],
   endpoints: (builder) => ({
     getFiles: builder.query<string[], void>({

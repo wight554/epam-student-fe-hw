@@ -1,14 +1,7 @@
 import React, { useState } from "react";
-import {
-  Button,
-  Card,
-  Grid,
-  MenuItem,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Button, Card, Grid, TextField, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { useLoginMutation, useRegisterMutation } from "../../services/auth";
+import { useLoginMutation } from "../../services/auth";
 
 export const Login = () => {
   const navigate = useNavigate();

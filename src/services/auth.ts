@@ -1,12 +1,10 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { createApi } from "@reduxjs/toolkit/query/react";
 import { AuthFormBody } from "../types";
-import { BASE_URL } from "../constants/api";
+import { baseQuery } from "../constants/api";
 
 export const authApi = createApi({
   reducerPath: "auth",
-  baseQuery: fetchBaseQuery({
-    baseUrl: `${BASE_URL}`,
-  }),
+  baseQuery,
   tagTypes: ["Auth"],
   endpoints: (builder) => ({
     login: builder.mutation<string, Pick<AuthFormBody, "email" | "password">>({
