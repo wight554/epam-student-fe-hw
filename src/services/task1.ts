@@ -1,6 +1,6 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { File, FileFormBody } from "../types";
-import { baseQuery } from "../constants/api";
+import { baseQuery } from "../api/baseQuery";
 
 export const task1Api = createApi({
   reducerPath: "task1Api",

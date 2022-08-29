@@ -1,6 +1,6 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 import { AuthFormBody } from "../types";
-import { baseQuery } from "../constants/api";
+import { baseQuery } from "../api/baseQuery";
 
 export const authApi = createApi({
   reducerPath: "auth",
