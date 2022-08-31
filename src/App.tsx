@@ -9,6 +9,7 @@ import { Login } from "./components/Login";
 import { Register } from "./components/Register";
 
 const App = () => {
+
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
