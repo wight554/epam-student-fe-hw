@@ -8,8 +8,12 @@
     "dev:local": "cross-env API_URL=http://localhost:8080 yarn dev",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "lint": "prettier --check . --ignore-path .gitignore",
-    "format": "yarn lint --write"
+    "formatter:check": "prettier --check . --ignore-path .gitignore",
+    "formatter:write": "yarn prettier --write",
+    "linter": "eslint . --ignore-path .gitignore",
+    "linter:fix": "yarn eslint --fix",
+    "lint": "yarn linter && yarn formatter:check",
+    "format": "yarn linter:fix && yarn formatter:write"
   },
   "dependencies": {
     "@emotion/react": "^11.10.0",
@@ -27,9 +31,17 @@
     "@types/node": "^18.7.14",
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",
+    "@typescript-eslint/eslint-plugin": "^5.0.0",
     "@vitejs/plugin-react": "^2.0.0",
-    "typescript": "^4.6.4",
-    "vite": "^3.0.0",
-    "cross-env": "^7.0.3"
+    "cross-env": "^7.0.3",
+    "eslint": "^8.0.1",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-config-standard-with-typescript": "^22.0.0",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-n": "^15.0.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-react": "^7.31.4",
+    "typescript": "*",
+    "vite": "^3.0.0"
   }
 }
