@@ -36,12 +36,9 @@
     "cross-env": "^7.0.3",
     "eslint": "^8.0.1",
     "eslint-config-prettier": "^8.5.0",
-    "eslint-config-standard-with-typescript": "^22.0.0",
     "eslint-plugin-import": "^2.25.2",
-    "eslint-plugin-n": "^15.0.0",
-    "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-react": "^7.31.4",
-    "typescript": "*",
+    "typescript": "^4.8.2",
     "vite": "^3.0.0"
   }
 }
