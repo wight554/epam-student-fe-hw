@@ -11,7 +11,7 @@ export const FileItem = () => {
   const { filename } = useParams();
   const navigate = useNavigate();
 
-  const { data, error, isLoading } = useGetFileByNameQuery(filename!);
+  const { data } = useGetFileByNameQuery(filename!);
   const [changeFile] = useChangeFileMutation();
   const [deleteFile] = useDeleteFileMutation();
 
