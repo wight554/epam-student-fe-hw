@@ -18,9 +18,7 @@
   },
   "parser": "@typescript-eslint/parser",
   "plugins": ["react", "@typescript-eslint"],
-  "rules": {
-    "react/jsx-uses-react": "off"
-  },
+  "rules": {},
   "settings": {
     "react": {
       "version": "detect"

@@ -6,12 +6,16 @@ import {
   useGetFileByNameQuery,
 } from "../../services/task1";
 import { Box, Button, Card, Grid, TextField, Typography } from "@mui/material";
+import { File } from "../../types";
 
 export const FileItem = () => {
   const { filename } = useParams();
   const navigate = useNavigate();
 
-  const { data } = useGetFileByNameQuery(filename || "");
+  const { data } = filename
+    ? useGetFileByNameQuery(filename)
+    : { data: {} as File };
+
   const [changeFile] = useChangeFileMutation();
   const [deleteFile] = useDeleteFileMutation();
 
@@ -24,14 +28,18 @@ export const FileItem = () => {
 
   const onSaveChanges = () => {
     if (confirm("Are you sure?")) {
-      changeFile({ filename: filename || "", content });
+      if (filename) {
+        changeFile({ filename: filename, content });
+      }
       setEditMode(false);
     }
   };
 
   const onDeleteFile = () => {
     if (confirm("Are you sure?")) {
-      deleteFile(filename || "");
+      if (filename) {
+        deleteFile(filename);
+      }
       navigate("/task1");
     }
   };
