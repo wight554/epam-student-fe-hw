@@ -4,8 +4,10 @@
     "es2021": true
   },
   "extends": [
-    "plugin:react/recommended",
     "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:react/jsx-runtime",
     "plugin:@typescript-eslint/recommended",
     "prettier"
   ],
@@ -18,8 +20,7 @@
   "plugins": ["react", "@typescript-eslint"],
   "rules": {
     "react/jsx-uses-react": "off",
-    "react/react-in-jsx-scope": "off",
-    "@typescript-eslint/no-non-null-assertion": "off"
+    "react/react-in-jsx-scope": "off"
   },
   "settings": {
     "react": {
