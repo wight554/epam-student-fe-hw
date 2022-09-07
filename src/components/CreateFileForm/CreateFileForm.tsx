@@ -20,8 +20,7 @@ export const CreateFileForm = () => {
 
   const navigate = useNavigate();
 
-  const [createFile, { isLoading, isError, error, isSuccess }] =
-    useCreateFileMutation();
+  const [createFile] = useCreateFileMutation();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;

@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Card,
   List,
@@ -10,7 +9,7 @@ import { useGetFilesQuery } from "../../services/task1";
 import { useNavigate } from "react-router-dom";
 
 export const FileList = () => {
-  const { data: files, error, isLoading } = useGetFilesQuery();
+  const { data: files } = useGetFilesQuery();
 
   const navigate = useNavigate();
 

@@ -10,7 +10,7 @@ export const task1Api = createApi({
     getFiles: builder.query<string[], void>({
       query: () => "/api/v1/files",
       transformResponse: ({ files }) => files,
-      providesTags: (result, error, arg) =>
+      providesTags: (result) =>
         result
           ? [
               ...result.map(
@@ -22,7 +22,7 @@ export const task1Api = createApi({
     }),
     getFileByName: builder.query<File, string>({
       query: (filename) => `/api/v1/files/${filename}`,
-      providesTags: (result, error, arg) =>
+      providesTags: (result) =>
         result
           ? [{ type: "File" as const, id: result.filename }, "File"]
           : ["File"],

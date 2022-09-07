@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import {
   useChangeFileMutation,
@@ -8,10 +8,13 @@ import {
 import { Box, Button, Card, Grid, TextField, Typography } from "@mui/material";
 
 export const FileItem = () => {
-  const { filename } = useParams();
+  const { filename = "" } = useParams();
   const navigate = useNavigate();
 
-  const { data, error, isLoading } = useGetFileByNameQuery(filename!);
+  const { data } = useGetFileByNameQuery(filename, {
+    skip: !filename,
+  });
+
   const [changeFile] = useChangeFileMutation();
   const [deleteFile] = useDeleteFileMutation();
 
@@ -24,14 +27,18 @@ export const FileItem = () => {
 
   const onSaveChanges = () => {
     if (confirm("Are you sure?")) {
-      changeFile({ filename: filename!, content });
+      if (filename) {
+        changeFile({ filename: filename, content });
+      }
       setEditMode(false);
     }
   };
 
   const onDeleteFile = () => {
     if (confirm("Are you sure?")) {
-      deleteFile(filename!);
+      if (filename) {
+        deleteFile(filename);
+      }
       navigate("/task1");
     }
   };
