@@ -6,15 +6,14 @@ import {
   useGetFileByNameQuery,
 } from "../../services/task1";
 import { Box, Button, Card, Grid, TextField, Typography } from "@mui/material";
-import { File } from "../../types";
 
 export const FileItem = () => {
-  const { filename } = useParams();
+  const { filename = "" } = useParams();
   const navigate = useNavigate();
 
-  const { data } = filename
-    ? useGetFileByNameQuery(filename)
-    : { data: {} as File };
+  const { data } = useGetFileByNameQuery(filename, {
+    skip: !filename,
+  });
 
   const [changeFile] = useChangeFileMutation();
   const [deleteFile] = useDeleteFileMutation();
