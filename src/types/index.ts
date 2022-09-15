@@ -11,6 +11,11 @@ export interface User {
   name: string;
 }
 
+export interface Token {
+  name: string;
+  exp: number;
+}
+
 export interface FileFormBody {
   filename: string;
   password?: string;

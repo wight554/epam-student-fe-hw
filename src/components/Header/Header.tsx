@@ -1,25 +1,42 @@
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Button from "@mui/material/Button";
+import jwt_decode from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 import { Avatar, Grid } from "@mui/material";
-import { authApi, useGetUserQuery } from "../../services/auth";
-import { useDispatch } from "react-redux";
-import { useEffect, useState } from "react";
+import { authApi } from "../../services/auth";
+import { useEffect } from "react";
+import { getUserName } from "../../slices/userSlice";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import { AUTH_TOKEN } from "../../constants/constants";
+import { Token } from "../../types";
 
 export const Header = () => {
-  const [skip, setSkip] = useState(true);
-  const { data } = useGetUserQuery(null, { skip: skip });
-  const dispatch = useDispatch();
+  const { name } = useAppSelector((state) => state.user);
+  const dispatch = useAppDispatch();
 
   const navigate = useNavigate();
 
-  const token = localStorage.getItem("AUTH_TOKEN");
+  const logout = () => {
+    dispatch(getUserName(""));
+    localStorage.setItem(AUTH_TOKEN, "");
+    dispatch(authApi.util.resetApiState());
+  };
+
+  const token = localStorage.getItem(AUTH_TOKEN);
+
   useEffect(() => {
     if (token) {
-      setSkip(false);
+      const decoded = jwt_decode<Token>(token);
+      const currentTime = Date.now() / 1000;
+
+      if (decoded.exp < currentTime) {
+        logout();
+      } else {
+        dispatch(getUserName(decoded.name));
+      }
     }
-  }, [token]);
+  }, [token, name]);
 
   return (
     <AppBar position="static">
@@ -48,16 +65,10 @@ export const Header = () => {
             </Grid>
           </Grid>
           <Grid item>
-            {data ? (
+            {name ? (
               <Grid container>
-                <Avatar>{data.name[0]}</Avatar>
-                <Button
-                  color="info"
-                  onClick={() => {
-                    localStorage.setItem("AUTH_TOKEN", "");
-                    dispatch(authApi.util.resetApiState());
-                  }}
-                >
+                <Avatar>{name[0]}</Avatar>
+                <Button color="info" onClick={logout}>
                   Logout
                 </Button>
               </Grid>
