@@ -1,42 +1,22 @@
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Button from "@mui/material/Button";
-import jwt_decode from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 import { Avatar, Grid } from "@mui/material";
-import { authApi } from "../../services/auth";
-import { useEffect } from "react";
-import { getUserName } from "../../slices/userSlice";
+import { setUser } from "../../slices/userSlice";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { AUTH_TOKEN } from "../../constants/constants";
-import { Token } from "../../types";
 
 export const Header = () => {
-  const { name } = useAppSelector((state) => state.user);
+  const { user } = useAppSelector((state) => state.user);
   const dispatch = useAppDispatch();
-
+  console.log(user);
   const navigate = useNavigate();
 
   const logout = () => {
-    dispatch(getUserName(""));
+    dispatch(setUser({}));
     localStorage.setItem(AUTH_TOKEN, "");
-    dispatch(authApi.util.resetApiState());
   };
-
-  const token = localStorage.getItem(AUTH_TOKEN);
-
-  useEffect(() => {
-    if (token) {
-      const decoded = jwt_decode<Token>(token);
-      const currentTime = Date.now() / 1000;
-
-      if (decoded.exp < currentTime) {
-        logout();
-      } else {
-        dispatch(getUserName(decoded.name));
-      }
-    }
-  }, [token, name]);
 
   return (
     <AppBar position="static">
@@ -65,9 +45,9 @@ export const Header = () => {
             </Grid>
           </Grid>
           <Grid item>
-            {name ? (
+            {user.name ? (
               <Grid container>
-                <Avatar>{name[0]}</Avatar>
+                <Avatar>{user.name[0]}</Avatar>
                 <Button color="info" onClick={logout}>
                   Logout
                 </Button>

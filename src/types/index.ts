@@ -12,6 +12,7 @@ export interface User {
 }
 
 export interface Token {
+  id: string;
   name: string;
   exp: number;
 }

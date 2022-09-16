@@ -2,9 +2,16 @@ import React, { useState } from "react";
 import { Button, Card, Grid, TextField, Typography } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { useLoginMutation } from "../../services/auth";
+import { useAppDispatch } from "../../store/hooks";
+import { setUser } from "../../slices/userSlice";
+import { AUTH_TOKEN } from "../../constants/constants";
+import jwtDecode from "jwt-decode";
+import { Token } from "../../types";
 
 export const Login = () => {
   const navigate = useNavigate();
+
+  const dispatch = useAppDispatch();
 
   const [loginForm, setLoginForm] = useState({
     email: "",
@@ -21,7 +28,9 @@ export const Login = () => {
   const handleLogin = async () => {
     const token = await login(loginForm).unwrap();
     if (token) {
-      localStorage.setItem("AUTH_TOKEN", token);
+      localStorage.setItem(AUTH_TOKEN, token);
+      const decoded = jwtDecode<Token>(token);
+      dispatch(setUser({ name: decoded.name, id: decoded.id }));
       navigate("/");
     }
   };
