@@ -8,9 +8,10 @@ import { useAppDispatch, useAppSelector } from "../../store/hooks";
 import { AUTH_TOKEN } from "../../constants/constants";
 
 export const Header = () => {
-  const { user } = useAppSelector((state) => state.user);
+  const {
+    user: { name },
+  } = useAppSelector((state) => state.user);
   const dispatch = useAppDispatch();
-  console.log(user);
   const navigate = useNavigate();
 
   const logout = () => {
@@ -45,9 +46,9 @@ export const Header = () => {
             </Grid>
           </Grid>
           <Grid item>
-            {user.name ? (
+            {name ? (
               <Grid container>
-                <Avatar>{user.name[0]}</Avatar>
+                <Avatar>{name[0]}</Avatar>
                 <Button color="info" onClick={logout}>
                   Logout
                 </Button>
