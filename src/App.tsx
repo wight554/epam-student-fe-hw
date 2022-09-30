@@ -30,7 +30,7 @@ const App = () => {
         dispatch(setUser({ name: decoded.name, id: decoded.id }));
       }
     }
-  }, [token]);
+  }, [token, dispatch]);
 
   return (
     <Routes>
