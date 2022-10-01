@@ -6,6 +6,17 @@ export interface File {
   uploadedDate: Date;
 }
 
+export interface User {
+  email: string;
+  name: string;
+}
+
+export interface Token {
+  id: string;
+  name: string;
+  exp: number;
+}
+
 export interface FileFormBody {
   filename: string;
   password?: string;
