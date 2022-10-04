@@ -1,35 +1,28 @@
-import React, { useState } from 'react'
-import {
-  Button,
-  Card,
-  Grid,
-  MenuItem,
-  TextField,
-  Typography,
-} from '@mui/material'
-import { useCreateFileMutation } from '../../services/task1'
-import { FileFormBody } from '../../types'
-import { useNavigate } from 'react-router-dom'
+import React, { useState } from 'react';
+import { Button, Card, Grid, MenuItem, TextField, Typography } from '@mui/material';
+import { useCreateFileMutation } from '../../services/task1';
+import { FileFormBody } from '../../types';
+import { useNavigate } from 'react-router-dom';
 
 export const CreateFileForm = () => {
   const [fileForm, setFileForm] = useState<FileFormBody>({
     filename: '',
     content: '',
     type: '',
-  })
+  });
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  const [createFile] = useCreateFileMutation()
+  const [createFile] = useCreateFileMutation();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target
-    setFileForm((prevState) => ({ ...prevState, [name]: value }))
-  }
+    const { name, value } = e.target;
+    setFileForm(prevState => ({ ...prevState, [name]: value }));
+  };
 
   const handleFileCreate = () => {
-    createFile(fileForm)
-  }
+    createFile(fileForm);
+  };
 
   return (
     <Grid container direction="column" alignItems="center">
@@ -84,20 +77,12 @@ export const CreateFileForm = () => {
           <Grid item xs={12}>
             <Grid container spacing={2} justifyContent="flex-end">
               <Grid item>
-                <Button
-                  onClick={() => navigate('/task1')}
-                  variant="contained"
-                  color="secondary"
-                >
+                <Button onClick={() => navigate('/task1')} variant="contained" color="secondary">
                   Cancel
                 </Button>
               </Grid>
               <Grid item>
-                <Button
-                  onClick={handleFileCreate}
-                  variant="contained"
-                  color="primary"
-                >
+                <Button onClick={handleFileCreate} variant="contained" color="primary">
                   Save
                 </Button>
               </Grid>
@@ -106,5 +91,5 @@ export const CreateFileForm = () => {
         </Grid>
       </Card>
     </Grid>
-  )
-}
+  );
+};

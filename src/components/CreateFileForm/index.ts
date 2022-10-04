@@ -1,1 +1,1 @@
-export { CreateFileForm } from './CreateFileForm'
+export { CreateFileForm } from './CreateFileForm';

@@ -1,14 +1,14 @@
-import { createApi } from '@reduxjs/toolkit/query/react'
-import { AuthFormBody } from '../types'
-import { baseQuery } from '../api/baseQuery'
+import { createApi } from '@reduxjs/toolkit/query/react';
+import { AuthFormBody } from '../types';
+import { baseQuery } from '../api/baseQuery';
 
 export const authApi = createApi({
   reducerPath: 'auth',
   baseQuery,
   tagTypes: ['Auth'],
-  endpoints: (builder) => ({
+  endpoints: builder => ({
     login: builder.mutation<string, Pick<AuthFormBody, 'email' | 'password'>>({
-      query: (body) => ({
+      query: body => ({
         url: '/api/v1/user/login',
         method: 'POST',
         body: body,
@@ -16,7 +16,7 @@ export const authApi = createApi({
       transformResponse: ({ token }) => token,
     }),
     register: builder.mutation<string, AuthFormBody>({
-      query: (body) => ({
+      query: body => ({
         url: '/api/v1/user/register',
         method: 'POST',
         body: body,
@@ -24,6 +24,6 @@ export const authApi = createApi({
       transformResponse: ({ token }) => token,
     }),
   }),
-})
+});
 
-export const { useLoginMutation, useRegisterMutation } = authApi
+export const { useLoginMutation, useRegisterMutation } = authApi;

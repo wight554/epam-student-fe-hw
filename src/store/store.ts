@@ -1,8 +1,8 @@
-import { configureStore } from '@reduxjs/toolkit'
-import { task1Api } from '../services/task1'
-import { setupListeners } from '@reduxjs/toolkit/query'
-import { authApi } from '../services/auth'
-import { userSlice } from '../slices/userSlice'
+import { configureStore } from '@reduxjs/toolkit';
+import { task1Api } from '../services/task1';
+import { setupListeners } from '@reduxjs/toolkit/query';
+import { authApi } from '../services/auth';
+import { userSlice } from '../slices/userSlice';
 
 export const store = configureStore({
   reducer: {
@@ -11,8 +11,8 @@ export const store = configureStore({
     user: userSlice.reducer,
   },
   devTools: import.meta.env.DEV,
-  middleware: (getDefaultMiddleware) =>
+  middleware: getDefaultMiddleware =>
     getDefaultMiddleware().concat(task1Api.middleware, authApi.middleware),
-})
+});
 
-setupListeners(store.dispatch)
+setupListeners(store.dispatch);
