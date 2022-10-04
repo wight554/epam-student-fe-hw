@@ -4,14 +4,14 @@ import {
   ListItemButton,
   ListItemText,
   ListSubheader,
-} from "@mui/material";
-import { useGetFilesQuery } from "../../services/task1";
-import { useNavigate } from "react-router-dom";
+} from '@mui/material'
+import { useGetFilesQuery } from '../../services/task1'
+import { useNavigate } from 'react-router-dom'
 
 export const FileList = () => {
-  const { data: files } = useGetFilesQuery();
+  const { data: files } = useGetFilesQuery()
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   return (
     <Card sx={{ maxWidth: 360 }}>
@@ -34,5 +34,5 @@ export const FileList = () => {
         ))}
       </List>
     </Card>
-  );
-};
+  )
+}

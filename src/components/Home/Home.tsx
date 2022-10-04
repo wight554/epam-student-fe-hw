@@ -1,5 +1,5 @@
-import { Typography } from "@mui/material";
+import { Typography } from '@mui/material'
 
 export const Home = () => {
-  return <Typography>Home</Typography>;
-};
+  return <Typography>Home</Typography>
+}

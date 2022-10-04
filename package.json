@@ -9,7 +9,7 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "formatter:check": "prettier --check . --ignore-path .gitignore",
-    "formatter:write": "yarn prettier --write",
+    "formatter:write": "prettier --write . --ignore-path .gitignore",
     "linter": "eslint . --ignore-path .gitignore",
     "linter:fix": "yarn eslint --fix",
     "lint": "yarn linter && yarn formatter:check",

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react'
 import {
   Button,
   Card,
@@ -6,30 +6,30 @@ import {
   MenuItem,
   TextField,
   Typography,
-} from "@mui/material";
-import { useCreateFileMutation } from "../../services/task1";
-import { FileFormBody } from "../../types";
-import { useNavigate } from "react-router-dom";
+} from '@mui/material'
+import { useCreateFileMutation } from '../../services/task1'
+import { FileFormBody } from '../../types'
+import { useNavigate } from 'react-router-dom'
 
 export const CreateFileForm = () => {
   const [fileForm, setFileForm] = useState<FileFormBody>({
-    filename: "",
-    content: "",
-    type: "",
-  });
+    filename: '',
+    content: '',
+    type: '',
+  })
 
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
-  const [createFile] = useCreateFileMutation();
+  const [createFile] = useCreateFileMutation()
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFileForm((prevState) => ({ ...prevState, [name]: value }));
-  };
+    const { name, value } = e.target
+    setFileForm((prevState) => ({ ...prevState, [name]: value }))
+  }
 
   const handleFileCreate = () => {
-    createFile(fileForm);
-  };
+    createFile(fileForm)
+  }
 
   return (
     <Grid container direction="column" alignItems="center">
@@ -62,8 +62,8 @@ export const CreateFileForm = () => {
               value={fileForm.type}
               onChange={handleInputChange}
             >
-              <MenuItem value={".txt"}>.txt</MenuItem>
-              <MenuItem value={".json"}>.json</MenuItem>
+              <MenuItem value={'.txt'}>.txt</MenuItem>
+              <MenuItem value={'.json'}>.json</MenuItem>
             </TextField>
           </Grid>
           <Grid item xs={12}>
@@ -85,7 +85,7 @@ export const CreateFileForm = () => {
             <Grid container spacing={2} justifyContent="flex-end">
               <Grid item>
                 <Button
-                  onClick={() => navigate("/task1")}
+                  onClick={() => navigate('/task1')}
                   variant="contained"
                   color="secondary"
                 >
@@ -106,5 +106,5 @@ export const CreateFileForm = () => {
         </Grid>
       </Card>
     </Grid>
-  );
-};
+  )
+}

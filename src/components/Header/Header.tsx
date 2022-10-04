@@ -1,23 +1,23 @@
-import AppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
-import Button from "@mui/material/Button";
-import { useNavigate } from "react-router-dom";
-import { Avatar, Grid } from "@mui/material";
-import { setUser } from "../../slices/userSlice";
-import { useAppDispatch, useAppSelector } from "../../store/hooks";
-import { AUTH_TOKEN } from "../../constants/constants";
+import AppBar from '@mui/material/AppBar'
+import Toolbar from '@mui/material/Toolbar'
+import Button from '@mui/material/Button'
+import { useNavigate } from 'react-router-dom'
+import { Avatar, Grid } from '@mui/material'
+import { setUser } from '../../slices/userSlice'
+import { useAppDispatch, useAppSelector } from '../../store/hooks'
+import { AUTH_TOKEN } from '../../constants/constants'
 
 export const Header = () => {
   const {
     user: { name },
-  } = useAppSelector((state) => state.user);
-  const dispatch = useAppDispatch();
-  const navigate = useNavigate();
+  } = useAppSelector((state) => state.user)
+  const dispatch = useAppDispatch()
+  const navigate = useNavigate()
 
   const logout = () => {
-    dispatch(setUser({}));
-    localStorage.setItem(AUTH_TOKEN, "");
-  };
+    dispatch(setUser({}))
+    localStorage.setItem(AUTH_TOKEN, '')
+  }
 
   return (
     <AppBar position="static">
@@ -28,7 +28,7 @@ export const Header = () => {
               <Button
                 color="info"
                 onClick={() => {
-                  navigate("/");
+                  navigate('/')
                 }}
               >
                 Home
@@ -38,7 +38,7 @@ export const Header = () => {
               <Button
                 color="info"
                 onClick={() => {
-                  navigate("/task1");
+                  navigate('/task1')
                 }}
               >
                 Task 1
@@ -57,7 +57,7 @@ export const Header = () => {
               <Button
                 color="info"
                 onClick={() => {
-                  navigate("/login");
+                  navigate('/login')
                 }}
               >
                 Login
@@ -67,5 +67,5 @@ export const Header = () => {
         </Grid>
       </Toolbar>
     </AppBar>
-  );
-};
+  )
+}
