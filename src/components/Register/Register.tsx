@@ -1,30 +1,30 @@
-import React, { useState } from "react";
-import { Button, Card, Grid, TextField, Typography } from "@mui/material";
-import { useRegisterMutation } from "../../services/auth";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from 'react';
+import { Button, Card, Grid, TextField, Typography } from '@mui/material';
+import { useRegisterMutation } from '../../services/auth';
+import { useNavigate } from 'react-router-dom';
 
 export const Register = () => {
   const navigate = useNavigate();
 
   const [registerForm, setRegisterForm] = useState({
-    name: "",
-    email: "",
-    password: "",
-    confirmPassword: "",
+    name: '',
+    email: '',
+    password: '',
+    confirmPassword: '',
   });
 
   const [register] = useRegisterMutation();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setRegisterForm((prevState) => ({ ...prevState, [name]: value }));
+    setRegisterForm(prevState => ({ ...prevState, [name]: value }));
   };
 
   const handleRegister = async () => {
     const { name, email, password } = registerForm;
     const token = await register({ name, email, password }).unwrap();
     if (token) {
-      navigate("/login");
+      navigate('/login');
     }
   };
 
@@ -89,8 +89,7 @@ export const Register = () => {
                 <Button
                   onClick={handleRegister}
                   disabled={
-                    !registerForm.password ||
-                    registerForm.password !== registerForm.confirmPassword
+                    !registerForm.password || registerForm.password !== registerForm.confirmPassword
                   }
                   variant="text"
                   color="info"

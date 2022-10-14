@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import { Button, Card, Grid, TextField, Typography } from "@mui/material";
-import { useNavigate } from "react-router-dom";
-import { useLoginMutation } from "../../services/auth";
-import { useAppDispatch } from "../../store/hooks";
-import { setUser } from "../../slices/userSlice";
-import { AUTH_TOKEN } from "../../constants/constants";
-import jwtDecode from "jwt-decode";
-import { Token } from "../../types";
+import React, { useState } from 'react';
+import { Button, Card, Grid, TextField, Typography } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+import { useLoginMutation } from '../../services/auth';
+import { useAppDispatch } from '../../store/hooks';
+import { setUser } from '../../slices/userSlice';
+import { AUTH_TOKEN } from '../../constants/constants';
+import jwtDecode from 'jwt-decode';
+import { Token } from '../../types';
 
 export const Login = () => {
   const navigate = useNavigate();
@@ -14,15 +14,15 @@ export const Login = () => {
   const dispatch = useAppDispatch();
 
   const [loginForm, setLoginForm] = useState({
-    email: "",
-    password: "",
+    email: '',
+    password: '',
   });
 
   const [login] = useLoginMutation();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setLoginForm((prevState) => ({ ...prevState, [name]: value }));
+    setLoginForm(prevState => ({ ...prevState, [name]: value }));
   };
 
   const handleLogin = async () => {
@@ -31,7 +31,7 @@ export const Login = () => {
       localStorage.setItem(AUTH_TOKEN, token);
       const decoded = jwtDecode<Token>(token);
       dispatch(setUser({ name: decoded.name, id: decoded.id }));
-      navigate("/");
+      navigate('/');
     }
   };
 
@@ -70,11 +70,7 @@ export const Login = () => {
           <Grid item xs={12}>
             <Grid container justifyContent="space-between" spacing={2}>
               <Grid item>
-                <Button
-                  onClick={() => navigate("/register")}
-                  variant="text"
-                  color="info"
-                >
+                <Button onClick={() => navigate('/register')} variant="text" color="info">
                   Register
                 </Button>
               </Grid>

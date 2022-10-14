@@ -1,14 +1,14 @@
-import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import {
   useChangeFileMutation,
   useDeleteFileMutation,
   useGetFileByNameQuery,
-} from "../../services/task1";
-import { Box, Button, Card, Grid, TextField, Typography } from "@mui/material";
+} from '../../services/task1';
+import { Box, Button, Card, Grid, TextField, Typography } from '@mui/material';
 
 export const FileItem = () => {
-  const { filename = "" } = useParams();
+  const { filename = '' } = useParams();
   const navigate = useNavigate();
 
   const { data } = useGetFileByNameQuery(filename, {
@@ -18,15 +18,15 @@ export const FileItem = () => {
   const [changeFile] = useChangeFileMutation();
   const [deleteFile] = useDeleteFileMutation();
 
-  const [content, setContent] = useState("");
+  const [content, setContent] = useState('');
   const [editMode, setEditMode] = useState(false);
 
   useEffect(() => {
-    setContent(data?.content || "");
+    setContent(data?.content || '');
   }, [data]);
 
   const onSaveChanges = () => {
-    if (confirm("Are you sure?")) {
+    if (confirm('Are you sure?')) {
       if (filename) {
         changeFile({ filename: filename, content });
       }
@@ -35,11 +35,11 @@ export const FileItem = () => {
   };
 
   const onDeleteFile = () => {
-    if (confirm("Are you sure?")) {
+    if (confirm('Are you sure?')) {
       if (filename) {
         deleteFile(filename);
       }
-      navigate("/task1");
+      navigate('/task1');
     }
   };
 
@@ -60,13 +60,13 @@ export const FileItem = () => {
               fullWidth
               multiline
               type="text"
-              variant={editMode ? "filled" : "outlined"}
+              variant={editMode ? 'filled' : 'outlined'}
               color="info"
               name="content"
               label="Content"
               inputProps={{ readOnly: !editMode }}
               value={content}
-              onChange={(e) => setContent(e.target.value)}
+              onChange={e => setContent(e.target.value)}
             />
           </Grid>
           <Grid item xs={12}>

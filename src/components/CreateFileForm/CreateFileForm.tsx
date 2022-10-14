@@ -1,21 +1,14 @@
-import React, { useState } from "react";
-import {
-  Button,
-  Card,
-  Grid,
-  MenuItem,
-  TextField,
-  Typography,
-} from "@mui/material";
-import { useCreateFileMutation } from "../../services/task1";
-import { FileFormBody } from "../../types";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from 'react';
+import { Button, Card, Grid, MenuItem, TextField, Typography } from '@mui/material';
+import { useCreateFileMutation } from '../../services/task1';
+import { FileFormBody } from '../../types';
+import { useNavigate } from 'react-router-dom';
 
 export const CreateFileForm = () => {
   const [fileForm, setFileForm] = useState<FileFormBody>({
-    filename: "",
-    content: "",
-    type: "",
+    filename: '',
+    content: '',
+    type: '',
   });
 
   const navigate = useNavigate();
@@ -24,7 +17,7 @@ export const CreateFileForm = () => {
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setFileForm((prevState) => ({ ...prevState, [name]: value }));
+    setFileForm(prevState => ({ ...prevState, [name]: value }));
   };
 
   const handleFileCreate = () => {
@@ -62,8 +55,8 @@ export const CreateFileForm = () => {
               value={fileForm.type}
               onChange={handleInputChange}
             >
-              <MenuItem value={".txt"}>.txt</MenuItem>
-              <MenuItem value={".json"}>.json</MenuItem>
+              <MenuItem value={'.txt'}>.txt</MenuItem>
+              <MenuItem value={'.json'}>.json</MenuItem>
             </TextField>
           </Grid>
           <Grid item xs={12}>
@@ -84,20 +77,12 @@ export const CreateFileForm = () => {
           <Grid item xs={12}>
             <Grid container spacing={2} justifyContent="flex-end">
               <Grid item>
-                <Button
-                  onClick={() => navigate("/task1")}
-                  variant="contained"
-                  color="secondary"
-                >
+                <Button onClick={() => navigate('/task1')} variant="contained" color="secondary">
                   Cancel
                 </Button>
               </Grid>
               <Grid item>
-                <Button
-                  onClick={handleFileCreate}
-                  variant="contained"
-                  color="primary"
-                >
+                <Button onClick={handleFileCreate} variant="contained" color="primary">
                   Save
                 </Button>
               </Grid>

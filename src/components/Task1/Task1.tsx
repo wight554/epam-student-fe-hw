@@ -1,6 +1,6 @@
-import { Outlet, useNavigate } from "react-router-dom";
-import { Box } from "@mui/material";
-import Button from "@mui/material/Button";
+import { Outlet, useNavigate } from 'react-router-dom';
+import { Box } from '@mui/material';
+import Button from '@mui/material/Button';
 
 export const Task1 = () => {
   const navigate = useNavigate();
@@ -8,7 +8,7 @@ export const Task1 = () => {
     <Box>
       <Button
         onClick={() => {
-          navigate("/create");
+          navigate('/create');
         }}
         color="info"
       >

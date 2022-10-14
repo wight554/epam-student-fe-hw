@@ -1,12 +1,6 @@
-import {
-  Card,
-  List,
-  ListItemButton,
-  ListItemText,
-  ListSubheader,
-} from "@mui/material";
-import { useGetFilesQuery } from "../../services/task1";
-import { useNavigate } from "react-router-dom";
+import { Card, List, ListItemButton, ListItemText, ListSubheader } from '@mui/material';
+import { useGetFilesQuery } from '../../services/task1';
+import { useNavigate } from 'react-router-dom';
 
 export const FileList = () => {
   const { data: files } = useGetFilesQuery();
@@ -24,11 +18,8 @@ export const FileList = () => {
           </ListSubheader>
         }
       >
-        {(files || []).map((fileName) => (
-          <ListItemButton
-            key={fileName}
-            onClick={() => navigate(`${fileName}`)}
-          >
+        {(files || []).map(fileName => (
+          <ListItemButton key={fileName} onClick={() => navigate(`${fileName}`)}>
             <ListItemText primary={fileName} />
           </ListItemButton>
         ))}
